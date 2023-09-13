@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import FlipCard from 'react-native-flip-card'
+import { Pokemon } from '../utils/types';
 
-const PokemonCard = ({pokemon}) => {
+const PokemonCard = ({ pokemon }) => {
   return (
     <FlipCard style={styles.cardContainer}>
       <View style={styles.face}>
@@ -18,7 +19,7 @@ const PokemonCard = ({pokemon}) => {
         <Text style={styles.number}>Speed: {pokemon.stats.speed}</Text>
       </View>
     </FlipCard>
-    
+
   );
 };
 
@@ -50,6 +51,10 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   back: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  face: {
     alignItems: 'center',
     justifyContent: 'center',
   }
