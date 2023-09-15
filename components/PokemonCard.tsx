@@ -1,31 +1,31 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import FlipCard from 'react-native-flip-card'
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Pokemon } from '../utils/types';
 
-const PokemonCard = ({ pokemon }) => {
-  return (
-    <FlipCard style={styles.cardContainer}>
-      <View style={styles.face}>
-        <Image source={{ uri: pokemon.image }} style={styles.image} />
-        <Text style={styles.name}>{pokemon.name}</Text>
-        <Text style={styles.type}>Type: {pokemon.apiTypes[0].name}</Text>
-        <Text style={styles.number}># {pokemon.pokedexId}</Text>
-      </View>
-      <View style={styles.back}>
-        <Text style={styles.name}>HP: {pokemon.stats.HP}</Text>
-        <Text style={styles.number}>Attack: {pokemon.stats.attack}</Text>
-        <Text style={styles.number}>Defense: {pokemon.stats.defense}</Text>
-        <Text style={styles.number}>Speed: {pokemon.stats.speed}</Text>
-      </View>
-    </FlipCard>
+const PokemonCard = ({ pokemon, navigation }) => {
 
+  const navigateToPokemonDetail = (pokemon) => {
+    navigation.navigate('PokemonDetail', { pokemon });
+  };
+
+  const pokemonImage = {
+    id: pokemon.id,
+    image: pokemon.image,
+    apiEvolutions: pokemon.apiEvolutions,
+  };
+  return (
+    <TouchableOpacity style={styles.cardContainer} onPress={() => navigateToPokemonDetail(pokemonImage)}>
+      <Image source={{ uri: pokemon.image }} style={styles.image} />
+      <Text style={styles.name}>{pokemon.name}</Text>
+      <Text style={styles.type}>Type: {pokemon.apiTypes[0].name}</Text>
+      <Text style={styles.number}># {pokemon.pokedexId}</Text>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   cardContainer: {
-    width: '94%', // Pour afficher 2 cartes par ligne, ajustez ceci selon vos besoins
+    width: '46%', // Pour afficher 2 cartes par ligne, ajustez ceci selon vos besoins
     margin: '2%', // Espace entre les cartes
     backgroundColor: 'white',
     padding: 10,

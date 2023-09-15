@@ -3,12 +3,14 @@ import { ImageBackground, StyleSheet, View, FlatList, TextInput, Button } from '
 import PokemonCard from './PokemonCard';
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
 
   const [data, setData] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [orderByValue, setOrderBy] = useState('id');
+  const navigation = useNavigation();
 
   useEffect(() => {
     fetch('https://pokebuildapi.fr/api/v1/pokemon/limit/1000')
@@ -99,7 +101,7 @@ const Home = () => {
       </View>
       <FlatList
         data={filteredPokemons}
-        renderItem={({ item }) => <PokemonCard pokemon={item} key={item.id} />}
+        renderItem={({ item }) => <PokemonCard pokemon={item} key={item.id} navigation={navigation} />}
         keyExtractor={(item) => item.id}
         numColumns={2}
       />

@@ -1,0 +1,11 @@
+
+> EFREI-react-native-MausserveyNao@1.0.0 ios
+> expo start --ios
+
+Starting project at /Users/nao/Desktop/KMB/ProjectNaoReactNative
+env: load .env
+env: export API_URL
+Starting Metro Bundler
+› Opening exp://10.3.201.124:8081 on iPhone 14 Pro
+Waiting on http://localhost:8081
+Logs for your project will appear below.
