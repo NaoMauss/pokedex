@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View, FlatList, ScrollView, TextInput, Button } from 'react-native';
+import { ImageBackground, StyleSheet, View, FlatList, TextInput, Button } from 'react-native';
 import PokemonCard from './PokemonCard';
 import React from 'react';
 import { useEffect, useState } from 'react';
@@ -10,7 +10,6 @@ const Home = () => {
   const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [orderByValue, setOrderBy] = useState('id');
 
-  // same useEffect but add a console log 
   useEffect(() => {
     fetch('https://pokebuildapi.fr/api/v1/pokemon/limit/1000')
       .then((response) => response.json())
@@ -104,7 +103,6 @@ const Home = () => {
         keyExtractor={(item) => item.id}
         numColumns={2}
       />
-
     </View >
   );
 }

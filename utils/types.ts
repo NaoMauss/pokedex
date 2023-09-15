@@ -23,13 +23,13 @@ interface Pokemon {
         damage_multiplier: number;
         damage_relation: string;
     }[];
-    resistanceModifyingAbilitiesForApi: any[]; // You can replace this with a specific type if needed
+    resistanceModifyingAbilitiesForApi: any[];
     apiEvolutions: {
         name: string;
         pokedexId: number;
     }[];
-    apiPreEvolution: string; // Replace with a specific type if needed
-    apiResistancesWithAbilities: any[]; // Replace with a specific type if needed
+    apiPreEvolution: string;
+    apiResistancesWithAbilities: any[];
 }
 
 interface PokemonApi {
@@ -38,23 +38,23 @@ interface PokemonApi {
 }
 
 interface PokemonData {
-    abilities: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
+    abilities: any[];
     base_experience: number;
-    forms: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
-    game_indices: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
+    forms: any[];
+    game_indices: any[];
     height: number;
-    held_items: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
+    held_items: any[];
     id: number;
     is_default: boolean;
     location_area_encounters: string;
-    moves: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
+    moves: any[];
     name: string;
     order: number;
-    past_types: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
-    species: any; // Vous pouvez remplacer "any" par un type spécifique si nécessaire
-    sprites: any; // Vous pouvez remplacer "any" par un type spécifique si nécessaire
-    stats: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
-    types: any[]; // Vous pouvez remplacer "any[]" par un type spécifique si nécessaire
+    past_types: any[];
+    species: any;
+    sprites: any;
+    stats: any[];
+    types: any[];
     weight: number;
 }
 
