@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 const PokemonDetail = ({ route }) => {
     const [pokemonStats, setPokemonStats] = useState<PokemonData>();
     const url = "https://pokeapi.co/api/v2/pokemon/"
-    const { id, image, apiEvolutions } = route.params.pokemon;
+    const { id, image, apiEvolutions, stats, apiPreEvolution } = route.params.pokemon;
 
     useEffect(() => {
         fetch(url + id)
@@ -22,19 +22,32 @@ const PokemonDetail = ({ route }) => {
         <View style={styles.container}>
             <Image
                 style={styles.image}
-                source={{ uri: image }} // Remplacez "imageUrl" par la clé correcte pour l'URL de l'image du Pokémon
+                source={{ uri: image }}
             />
-            <Text>Poids: {pokemonStats?.weight || 60} kg</Text>
-            <Text>Taille: {pokemonStats?.height || 100} cm</Text>
+            <Text style={styles.text} >Poids: {pokemonStats?.weight || 60} kg</Text>
+            <Text style={styles.text}>Taille: {pokemonStats?.height || 100} cm</Text>
+
+            {
+                apiPreEvolution ? <TouchableOpacity>
+                    <Text style={styles.text}>Pre Evolution : {apiPreEvolution.name}</Text>
+                </TouchableOpacity> : null
+            }
             {
                 apiEvolutions.map((evolution) => {
                     return (
                         <TouchableOpacity>
-                            <Text>Evolution : {evolution.name}</Text>
+                            <Text style={styles.text}>Evolution : {evolution.name}</Text>
                         </TouchableOpacity>
                     )
                 })
             }
+
+            {stats.HP ? <Text style={styles.text}>HP: {stats.HP}</Text> : null}
+            {stats.attack ? <Text style={styles.text}>Attack: {stats.attack}</Text> : null}
+            {stats.defense ? <Text style={styles.text}>Defense: {stats.defense}</Text> : null}
+            {stats.speed ? <Text style={styles.text}>Speed: {stats.speed}</Text> : null}
+            {stats.special_attack ? <Text style={styles.text}>Special Attack: {stats.special_attack}</Text> : null}
+            {stats.special_defense ? <Text style={styles.text}>Special Defense: {stats.special_defense}</Text> : null}
         </View>
     );
 };
@@ -49,10 +62,10 @@ const styles = StyleSheet.create({
         width: 200,
         height: 200,
         marginBottom: 20,
-        resizeMode: 'contain', // Ajustez la mise en page de l'image selon vos besoins
+        resizeMode: 'contain',
     },
     text: {
-        fontSize: 16, // Taille de police
+        fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 10
     },

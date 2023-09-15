@@ -12,6 +12,8 @@ const PokemonCard = ({ pokemon, navigation }) => {
     id: pokemon.id,
     image: pokemon.image,
     apiEvolutions: pokemon.apiEvolutions,
+    stats: pokemon.stats,
+    apiPreEvolution: pokemon.apiPreEvolution,
   };
   return (
     <TouchableOpacity style={styles.cardContainer} onPress={() => navigateToPokemonDetail(pokemonImage)}>
